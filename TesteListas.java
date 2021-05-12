@@ -1,21 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package listas;
 
-/**
- *
- * @author Herbert Nascimento
- */
 public class TesteListas {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here     
+    
         Aluno[] aluno = new Aluno[3];
         tListAlunos list = new tListAlunos(5);
         aluno[0] = new Aluno("201910281", "fulano", "fulano@uesc.br");

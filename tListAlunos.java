@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package listas;
 
-/**
- *
- * @author Herbert Nascimento
- */
 public class tListAlunos {
 
     private int tam;
@@ -57,19 +49,19 @@ public class tListAlunos {
     }
 
     public boolean remNaoOrdenada(Aluno aluno) {
-        int n = this.tam;																						// n é o tamanho da lista
-        if (n > 0) {																										// se a lista não estiver vazia
+        int n = this.tam;	
+        if (n > 0) {																								
             int i = buscaNaoOrdenada(aluno.getMatricula());
-            if (i < n) {																									// se achei na lista
-                for (int j = i; j < n; j++) {																// removo o elemento de i
+            if (i < n) {		
+                for (int j = i; j < n; j++) {										
                     this.listAluno[j].setMatricula(this.listAluno[j + 1].getMatricula());
                     this.listAluno[j].setNome(this.listAluno[j + 1].getNome());
                     this.listAluno[j].setEmail(this.listAluno[j + 1].getEmail());
                 }
-                this.tam--;																							// e decrementa o tamanho
-                return true;																							// consegui remover
+                this.tam--;							
+                return true;	
             } else {
-                return false; 																				// não cosnegui pq não achei		
+                return false; 
             }
         } else {
             return false;
@@ -104,8 +96,8 @@ public class tListAlunos {
             this.listAluno[n] = new Aluno(aluno.getMatricula(), aluno.getNome(), aluno.getEmail());
             this.tam++;
             return true;
-        } else if (!this.achou) {																								// se não achei na lista
-            Aluno troca = new Aluno();																							// variavel de troca
+        } else if (!this.achou) {																			
+            Aluno troca = new Aluno();																			
             for (int j = i; j < n; j++) {
                 troca.setMatricula(this.listAluno[j].getMatricula());
                 troca.setNome(this.listAluno[j].getNome());
