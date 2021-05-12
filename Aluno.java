@@ -10,9 +10,14 @@ package listas;
  * @author Herbert Nascimento
  */
 public class Aluno {
+
     private String matricula;
     private String nome;
     private String email;
+
+    public Aluno() {
+        this(null,null,null);
+    }
 
     public Aluno(String matricula, String nome, String email) {
         this.matricula = matricula;
@@ -46,7 +51,7 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno{" + "matricula=" + matricula + ", nome=" + nome + ", email=" + email + '}';
+        return matricula + " | " + nome + " | " + email;
     }
-    
+
 }
