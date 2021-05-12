@@ -25,12 +25,12 @@ public class tListAlunos {
     private int buscaNaoOrdenada(String key) {
         int i = 0;
         int n = this.tam;
-        this.listAluno[n] = new Aluno(key, null, null);// adicionando chave no final      
+        this.listAluno[n] = new Aluno(key, null, null);      
         while (this.listAluno[i].getMatricula().compareTo(key) != 0) {
             i++;
         }
         this.listAluno[n] = new Aluno();
-        return i; //retorna o indice onde achou
+        return i;
     }
 
     public boolean incNaoOrdenada(Aluno aluno) {
@@ -68,7 +68,7 @@ public class tListAlunos {
         }
     }
 
-    public int buscaOrdenada(String key) {
+    private int buscaOrdenada(String key) {
         int min = 0, max = this.tam, mid = 0;
         while (min != max) {
             mid = (max + min) / 2;
