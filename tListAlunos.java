@@ -156,12 +156,12 @@ public class tListAlunos {
         }       
     }
 
-    public int getAluno(String matricula) {
+    public Aluno getAluno(String matricula) {
         int i = buscar(matricula);
-        if (this.achou || i < this.tam) {
-            return i;
+        if ((this.isOrdenada && this.achou) && (!this.isOrdenada && i < this.tam)) {
+            return listAluno[i];
         } else {
-            return 0;
+            return null;
         }
     }
 
