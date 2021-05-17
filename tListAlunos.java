@@ -158,7 +158,7 @@ public class tListAlunos {
 
     public int getAluno(String matricula) {
         int i = buscar(matricula);
-        if (this.achou || i < this.cap) {
+        if (this.achou || i < this.tam) {
             return i;
         } else {
             return 0;
