@@ -13,7 +13,7 @@ public class tListAlunos {
         this.listAluno = new Aluno[cap];
         this.tam = 0;
         this.achou = false;
-        this.isOrdenada = false;
+        this.isOrdenada = true;
     }
 
     public tListAlunos(int cap, boolean isOrdenada) {
