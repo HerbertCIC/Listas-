@@ -178,7 +178,7 @@ public class tListAlunos {
         }
     }
 
-    public Aluno getListAluno(int n) {
+    public Aluno getAluno(int n) {
         if (n < 0 || n >= this.tam) {
             return null;
         } else {
