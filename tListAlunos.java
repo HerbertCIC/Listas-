@@ -6,6 +6,7 @@ public class tListAlunos {
     private int cap;
     private boolean achou;
     private Aluno[] listAluno;
+    private Aluno aluno;
     private boolean isOrdenada;
 
     public tListAlunos() {
@@ -156,16 +157,12 @@ public class tListAlunos {
     }
 
     public int getAluno(String matricula) {
-        int n = this.tam;
-        int i = buscar(matricula);        
-        if(this.isOrdenada){
-            if(this.achou){
-                return i;
-            }
-        }else if(n <= this.cap){
+        int i = buscar(matricula);
+        if (this.achou || i < this.cap) {
             return i;
+        } else {
+            return 0;
         }
-        return 0;            
     }
 
     public int getTam() {
