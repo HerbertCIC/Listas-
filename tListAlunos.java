@@ -148,7 +148,11 @@ public class tListAlunos {
     }
 
     public Aluno getListAluno(int n) {
-        return listAluno[n];
+        if(n<0 || n>=this.tam){
+            return null;
+        }else{
+            return listAluno[n];
+        }       
     }
 
     public int getTam() {
