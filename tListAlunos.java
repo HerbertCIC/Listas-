@@ -112,6 +112,9 @@ public class tListAlunos {
     }
 
     public boolean incluir(Aluno aluno) {
+        if(this.tam == this.cap){
+          return false;
+        }
         boolean ok;
         if (this.isOrdenada) {
             ok = inclusaoOrdenada(aluno);
@@ -163,6 +166,9 @@ public class tListAlunos {
     }
 
     public boolean remover(Aluno aluno) {
+        if(this.tam == 0){
+            return false;
+        }
         boolean ok;
         if (this.isOrdenada) {
             ok = remocaoOrdenada(aluno);
