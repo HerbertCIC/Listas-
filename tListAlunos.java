@@ -98,7 +98,7 @@ public class tListAlunos {
 
     private boolean inclusaoNaoOrdenada(Aluno aluno) {
         int n = this.tam;
-        if (n <= this.cap) {
+        if (n <= this.cap) {  
             if (buscar(aluno.getMatricula()) == n) {
                 this.listAluno[n] = new Aluno(aluno.getMatricula(), aluno.getNome(), aluno.getEmail());
                 this.tam++;
