@@ -8,9 +8,9 @@ public class tListSequencial {
     private int fim;
     private boolean tipo;
 
-    public tListSequencial(int cap) {
+    public tListSequencial() {
         this.listAluno = new Aluno[cap];
-        this.cap = cap;
+        this.cap = 100;
         this.ini = 0;
         this.fim = 0;
         this.tipo = true;
