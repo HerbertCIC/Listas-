@@ -39,6 +39,12 @@ public class Aluno {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public void copiaAluno(Aluno destino, Aluno origem){
+        destino.setMatricula(origem.getMatricula());
+        destino.setNome(origem.getNome());
+        destino.setEmail(origem.getEmail());
+    }
 
     @Override
     public String toString() {

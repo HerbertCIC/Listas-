@@ -96,9 +96,9 @@ public class tListAlunos {
         }
     }
 
-    private boolean inclusaoNaoOrdenada(Aluno aluno) {
+    public boolean inclusaoNaoOrdenada(Aluno aluno) {
         int n = this.tam;
-        if (n <= this.cap) {  
+        if (n <= this.cap) {
             if (buscar(aluno.getMatricula()) == n) {
                 this.listAluno[n] = new Aluno(aluno.getMatricula(), aluno.getNome(), aluno.getEmail());
                 this.tam++;
@@ -112,9 +112,6 @@ public class tListAlunos {
     }
 
     public boolean incluir(Aluno aluno) {
-        if(this.tam == this.cap){
-          return false;
-        }
         boolean ok;
         if (this.isOrdenada) {
             ok = inclusaoOrdenada(aluno);
@@ -166,9 +163,6 @@ public class tListAlunos {
     }
 
     public boolean remover(Aluno aluno) {
-        if(this.tam == 0){
-            return false;
-        }
         boolean ok;
         if (this.isOrdenada) {
             ok = remocaoOrdenada(aluno);
@@ -178,13 +172,7 @@ public class tListAlunos {
         return ok;
     }
 
-    public void printList() {
-        for (int i = 0; i < this.tam; i++) {
-            System.out.println(this.listAluno[i].getMatricula() + " | " + this.listAluno[i].getNome() + " | " + this.listAluno[i].getEmail());
-        }
-    }
-
-    public Aluno getAluno(int n) {
+    public Aluno getListAluno(int n) {
         if (n < 0 || n >= this.tam) {
             return null;
         } else {
@@ -207,6 +195,15 @@ public class tListAlunos {
 
     public int getCap() {
         return cap;
+    }
+
+    @Override
+    public String toString() {
+        String list = new String();
+        for (int i = 0; i < this.tam; i++) {
+            list = list + this.listAluno[i].getMatricula() + " | " + this.listAluno[i].getNome() + " | " + this.listAluno[i].getEmail() + "\n";
+        }
+        return list;
     }
 
 }
