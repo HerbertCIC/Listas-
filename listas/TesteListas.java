@@ -3,79 +3,58 @@ package listas;
 import java.util.Random;
 
 public class TesteListas {
-  
-    public static void main(String[] args) {      
-        int n = 5;
-        System.out.println("-------------LISTA-------------");
-        tListAlunos list = new tListAlunos(n, true);
+
+    public static void main(String[] args) {
+        
+        System.out.println("LISTA:");
+        int cont = 0;
+        ListAlunos list = new ListAlunos(5, true);
         geraAlunos(list);
         System.out.println(list.toString());
 
-        System.out.println("-------------INCLUINDO NA PILHA-------------");
-        tListSequencial pilha = new tListSequencial(n, true);
-        for (int i = 0; i < list.getTam(); i++) {
-            pilha.incList(list.getListAluno(i));
+        System.out.println("-------------REMOVENDO DA LISTA E INCLUINDO NA FILA-------------");
+        ListSequencial fila = new ListSequencial(5, false);
+        Aluno aux;
+        for (int i = list.getTam()-1; i >= 0; i--) {
+            aux = list.getListAluno(i);
+            if (list.remover(aux)) {
+                if (fila.incList(aux))
+                    cont++;
+            }
         }
-        System.out.println(pilha.toString());
+        /*outra alternativa...
+        int fim_da_lista = list.getTam();
+        for (int i = 0 ; i < fim_da_lista; i++) {
+             aux = list.getListAluno(0);
+            if(list.remover(aux)){
+                if(fila.incList(aux))
+                    cont++;
+            }
+        }*/
+        System.out.println("LISTA:\n" + list.toString());
+        System.out.println(cont + " elementos foram adicionados a fila: \n" + fila.toString());
 
-        System.out.println("-------------REMOVENDO DA PILHA-------------");
+        cont = 0;
+        System.out.println("-------------REMOVENDO DA FILA E INCLUINDO NA PILHA-------------");
+        ListSequencial pilha = new ListSequencial(5, true);
         Aluno meuAluno = new Aluno();
-        for (int i = pilha.getFim(); i > pilha.getIni(); i--) {
-            meuAluno.copiaAluno(meuAluno, pilha.remList());
-            System.out.println(meuAluno.toString());
+        for (int i = fila.getIni(); i < fila.getFim(); i++) {
+            if (fila.remList(meuAluno)) {
+                if (pilha.incList(meuAluno)) {
+                    cont++;
+                } else {
+                    System.out.println("Pilha cheia!");
+                }
+            } else {
+                System.out.println("Não é possivel remover, fila vazia!");
+            }
         }
-        
-        //segunda lista para teste
-        tListAlunos list2 = new tListAlunos(10, true);
-        geraAlunos(list2);
-
-        System.out.println("\n-------------TRY: INCLUIR ELEMENTOS ALEM DA CAP-------------");
-        for (int i = 0; i < list2.getTam() + 1; i++) {
-            pilha.incList(list2.getListAluno(i));
-        }
-        System.out.println(pilha.toString());
-
-        System.out.println("-------------TRY: ESVAZIAR ALEM DA CAP-------------");
-        for (int i = pilha.getIni(); i < pilha.getFim() + 1; i++) {
-            meuAluno.copiaAluno(meuAluno, pilha.remList());
-            System.out.println(meuAluno.toString());
-        }
-
-        System.out.println("\n-------------INCLUIDO NA FILA-------------");
-        tListSequencial fila = new tListSequencial(n, false);
-        for (int i = 0; i < list.getTam(); i++) {
-            fila.incList(list.getListAluno(i));
-        }
-        System.out.println(fila.toString());
-
-        System.out.println("-------------REMOVIDO DA FILA-------------");
-        Aluno meuAluno2 = new Aluno();
-        for (int i = fila.getIni(); i < fila.getFim() / 2; i++) {
-            meuAluno2.copiaAluno(meuAluno2, fila.remList());
-            System.out.println(meuAluno2.toString());
-        }
-        System.out.println(fila.getFim());
-        System.out.println(fila.getIni());
-
-        //terceira lista de teste
-        tListAlunos list3 = new tListAlunos(10, true);
-        geraAlunos(list3);
-
-        System.out.println("\n-------------TRY: INCLUIR ELEMENTOS ALEM DA CAP-------------");
-        for (int i = 0; i < list3.getTam(); i++) {
-            fila.incList(list3.getListAluno(i));
-        }
-        System.out.println(fila.toString());
-
-        System.out.println("-------------TRY: ESVAZIAR ALEM DA CAP-------------");
-        for (int i = fila.getIni(); i < fila.getFim() + 1; i++) {
-            meuAluno2.copiaAluno(meuAluno2, fila.remList());
-            System.out.println(meuAluno2.toString());
-        }
+        System.out.println("FILA:\n" + fila.toString());
+        System.out.println(cont + " elementos foram adicionados a pilha:\n" + pilha.toString());
 
     }
 
-    public static void geraAlunos(tListAlunos lista) {
+    public static void geraAlunos(ListAlunos lista) {
         long matricula;
         Aluno aluno = new Aluno();
         Random rand = new Random();

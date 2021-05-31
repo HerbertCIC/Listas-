@@ -1,6 +1,10 @@
 package listas;
 
-public class tListSequencial {
+/**
+ *
+ * @author Herbert Nascimento
+ */
+public class ListSequencial {
 
     private Aluno[] listAluno;
     private int cap;
@@ -8,7 +12,7 @@ public class tListSequencial {
     private int fim;
     private boolean tipo;
 
-    public tListSequencial() {
+    public ListSequencial() {
         this.cap = 100;
         this.listAluno = new Aluno[this.cap];
         this.ini = 0;
@@ -16,7 +20,7 @@ public class tListSequencial {
         this.tipo = true;
     }
 
-    public tListSequencial(int cap, boolean tipo) {
+    public ListSequencial(int cap, boolean tipo) {
         this.listAluno = new Aluno[cap];
         this.cap = cap;
         this.ini = 0;
@@ -34,14 +38,14 @@ public class tListSequencial {
         return retorno;
     }
 
-    public Aluno remList() {
-        Aluno aluno;
+    public boolean remList(Aluno aluno) {
+        boolean retorno;
         if (this.tipo) {
-            aluno = remPilhaAlunos();
+            retorno = remPilhaAlunos(aluno);
         } else {
-            aluno = remFilaAlunos();
+            retorno = remFilaAlunos(aluno);
         }
-        return aluno;
+        return retorno;
     }
 
     private boolean incPilhaAlunos(Aluno aluno) {
@@ -54,13 +58,13 @@ public class tListSequencial {
         return true;
     }
 
-    private Aluno remPilhaAlunos() {
+    private boolean remPilhaAlunos(Aluno aluno) {
         if (this.fim == 0) {
-            Aluno aluno = new Aluno();
-            return aluno;
+            return false;
         } else {
             this.fim--;
-            return this.listAluno[this.fim];
+            aluno.copiaAluno(aluno, this.listAluno[this.fim]);
+            return true;
         }
     }
 
@@ -74,15 +78,14 @@ public class tListSequencial {
         return true;
     }
 
-    private Aluno remFilaAlunos() {
-        Aluno aluno = new Aluno();
+    private boolean remFilaAlunos(Aluno aluno) {
         if (this.fim == this.ini) {
-            return aluno;
+            return false;
         } else {
-            aluno = this.listAluno[this.ini % this.cap];
+            aluno.copiaAluno(aluno, this.listAluno[this.ini % this.cap]);
             this.ini++;
-        }
-        return aluno;
+            return true;
+        }        
     }
 
     @Override

@@ -1,6 +1,10 @@
 package listas;
 
-public class tListAlunos {
+/**
+ *
+ * @author Herbert Nascimento
+ */
+public class ListAlunos {
 
     private int tam;
     private int cap;
@@ -9,7 +13,7 @@ public class tListAlunos {
     private Aluno aluno;
     private boolean isOrdenada;
 
-    public tListAlunos() {
+    public ListAlunos() {
         this.cap = 100;
         this.listAluno = new Aluno[cap];
         this.tam = 0;
@@ -17,7 +21,7 @@ public class tListAlunos {
         this.isOrdenada = true;
     }
 
-    public tListAlunos(int cap, boolean isOrdenada) {
+    public ListAlunos(int cap, boolean isOrdenada) {
         this.cap = cap;
         this.listAluno = new Aluno[cap];
         this.tam = 0;
@@ -125,12 +129,9 @@ public class tListAlunos {
         int n = this.tam;
         if (n > 0) {
             int i = buscar(aluno.getMatricula());
-            if (this.achou) {
-                this.listAluno[this.tam] = new Aluno();
-                for (int j = i; j < n; j++) {
-                    this.listAluno[j].setMatricula(this.listAluno[j + 1].getMatricula());
-                    this.listAluno[j].setNome(this.listAluno[j + 1].getNome());
-                    this.listAluno[j].setEmail(this.listAluno[j + 1].getEmail());
+            if (this.achou) {                
+                for (int j = i; j < n-1; j++) {                    
+                    this.listAluno[j].copiaAluno(listAluno[j], this.listAluno[j + 1]);
                 }
                 this.tam--;
                 return true;

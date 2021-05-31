@@ -1,5 +1,9 @@
 package listas;
 
+/**
+ *
+ * @author Herbert Nascimento
+ */
 public class Aluno {
 
     private String matricula;
