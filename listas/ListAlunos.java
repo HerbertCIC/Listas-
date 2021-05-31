@@ -56,7 +56,7 @@ public class ListAlunos {
         while (this.listAluno[i].getMatricula().compareTo(key) != 0) {
             i++;
         }
-        this.listAluno[n] = new Aluno();
+        this.listAluno[n] = new Aluno(null, null, null);
         return i;
     }
 
@@ -92,7 +92,7 @@ public class ListAlunos {
         }
     }
 
-    public boolean inclusaoNaoOrdenada(Aluno aluno) {
+    private boolean inclusaoNaoOrdenada(Aluno aluno) {
         int n = this.tam;
         if (n <= this.cap) {
             if (buscar(aluno.getMatricula()) == n) {

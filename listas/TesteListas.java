@@ -14,8 +14,8 @@ public class TesteListas {
     public static void main(String[] args) {
         // TODO code application logic here 
         int cont = 0;//conta a quantidade de elementos add/rem
-        ListAlunos list = new ListAlunos();//cria lista ordenada com capacidade 100
-        geraAlunos(list);//preenche a lista
+        ListAlunos list = new ListAlunos(5, true);
+        geraAlunos(list);
         System.out.println("LISTA:\n" + list.toString());
 
         System.out.println("-------------REMOVENDO DA LISTA E INCLUINDO NA FILA-------------");
@@ -43,7 +43,7 @@ public class TesteListas {
         cont = 0;
         System.out.println("-------------REMOVENDO DA FILA E INCLUINDO NA PILHA-------------");
         ListSequencial pilha = new ListSequencial(fila.getFim(), true);
-        Aluno meuAluno = new Aluno();
+        Aluno meuAluno = new Aluno(null, null, null);
         for (int i = fila.getIni(); i < fila.getFim(); i++) {
             if (fila.remList(meuAluno)) {
                 if (pilha.incList(meuAluno)) {
@@ -62,15 +62,15 @@ public class TesteListas {
 
     public static void geraAlunos(ListAlunos lista) {
         long matricula;
-        Aluno aluno = new Aluno();
+        Aluno aluno = new Aluno(null, null, null);
         Random rand = new Random();
         while (lista.getTam() < lista.getCap()) {
             matricula = (2017 + rand.nextInt(5)) * 100000 + rand.nextInt(100000);
             aluno.setMatricula(Long.toString(matricula));
             aluno.setNome("Nome SobrenomeM SobrenomeP");
             aluno.setEmail("NSmSp@uesc.br");
-            lista.inclusaoNaoOrdenada(aluno);
+            lista.incluir(aluno);
         }
     }
-
+    
 }

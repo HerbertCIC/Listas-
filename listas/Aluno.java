@@ -10,10 +10,6 @@ public class Aluno {
     private String nome;
     private String email;
 
-    public Aluno() {
-        this(null,null,null);
-    }
-
     public Aluno(String matricula, String nome, String email) {
         this.matricula = matricula;
         this.nome = nome;
