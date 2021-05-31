@@ -14,8 +14,8 @@ public class TesteListas {
     public static void main(String[] args) {
         // TODO code application logic here 
         int cont = 0;//conta a quantidade de elementos add/rem
-        ListAlunos list = new ListAlunos();
-        geraAlunos(list);
+        ListAlunos list = new ListAlunos();//cria lista ordenada com capacidade 100
+        geraAlunos(list);//preenche a lista
         System.out.println("LISTA:\n" + list.toString());
 
         System.out.println("-------------REMOVENDO DA LISTA E INCLUINDO NA FILA-------------");
