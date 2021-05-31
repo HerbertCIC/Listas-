@@ -21,8 +21,8 @@ public class ListSequencial {
     }
 
     public ListSequencial(int cap, boolean tipo) {
-        this.listAluno = new Aluno[cap];
         this.cap = cap;
+        this.listAluno = new Aluno[this.cap];
         this.ini = 0;
         this.fim = 0;
         this.tipo = tipo;
@@ -110,3 +110,4 @@ public class ListSequencial {
     }
 
 }
+

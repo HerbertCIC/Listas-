@@ -15,7 +15,7 @@ public class ListAlunos {
 
     public ListAlunos() {
         this.cap = 100;
-        this.listAluno = new Aluno[cap];
+        this.listAluno = new Aluno[this.cap];
         this.tam = 0;
         this.achou = false;
         this.isOrdenada = true;
@@ -23,7 +23,7 @@ public class ListAlunos {
 
     public ListAlunos(int cap, boolean isOrdenada) {
         this.cap = cap;
-        this.listAluno = new Aluno[cap];
+        this.listAluno = new Aluno[this.cap];
         this.tam = 0;
         this.achou = false;
         this.isOrdenada = isOrdenada;
@@ -78,19 +78,11 @@ public class ListAlunos {
             this.tam++;
             return true;
         } else if (!this.achou) {																								// se não achei na lista
-            Aluno troca = new Aluno();																							// variavel de troca
+            Aluno troca;																							// variavel de troca
             for (int j = i; j < n; j++) {
-                troca.setMatricula(this.listAluno[j].getMatricula());
-                troca.setNome(this.listAluno[j].getNome());
-                troca.setEmail(this.listAluno[j].getEmail());
-
-                this.listAluno[j].setMatricula(aluno.getMatricula());
-                this.listAluno[j].setNome(aluno.getNome());
-                this.listAluno[j].setEmail(aluno.getEmail());
-
-                aluno.setMatricula(troca.getMatricula());
-                aluno.setNome(troca.getNome());
-                aluno.setEmail(troca.getEmail());
+                troca = this.listAluno[j];
+                listAluno[j] = aluno;
+                aluno = troca;
             }
             this.listAluno[n] = new Aluno(aluno.getMatricula(), aluno.getNome(), aluno.getEmail());
             this.tam++;
@@ -129,8 +121,8 @@ public class ListAlunos {
         int n = this.tam;
         if (n > 0) {
             int i = buscar(aluno.getMatricula());
-            if (this.achou) {                
-                for (int j = i; j < n-1; j++) {                    
+            if (this.achou) {
+                for (int j = i; j < n - 1; j++) {
                     this.listAluno[j].copiaAluno(listAluno[j], this.listAluno[j + 1]);
                 }
                 this.tam--;
@@ -148,10 +140,9 @@ public class ListAlunos {
         if (n > 0) {																										// se a lista não estiver vazia
             int i = buscar(aluno.getMatricula());
             if (i < n) {																									// se achei na lista
-                for (int j = i; j < n; j++) {																// removo o elemento de i
-                    this.listAluno[j].setMatricula(this.listAluno[j + 1].getMatricula());
-                    this.listAluno[j].setNome(this.listAluno[j + 1].getNome());
-                    this.listAluno[j].setEmail(this.listAluno[j + 1].getEmail());
+                for (int j = i; j < n - 1; j++) // removo o elemento de i
+                {
+                    this.listAluno[j].copiaAluno(listAluno[j], this.listAluno[j + 1]);
                 }
                 this.tam--;																							// e decrementa o tamanho
                 return true;																							// consegui remover
@@ -183,7 +174,7 @@ public class ListAlunos {
 
     public Aluno getAluno(String matricula) {
         int i = buscar(matricula);
-        if ((this.isOrdenada && this.achou) && (!this.isOrdenada && i < this.tam)) {
+        if ((this.isOrdenada && this.achou) || (!this.isOrdenada && i < this.tam)) {
             return listAluno[i];
         } else {
             return null;

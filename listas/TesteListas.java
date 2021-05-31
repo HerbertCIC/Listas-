@@ -2,18 +2,24 @@ package listas;
 
 import java.util.Random;
 
+/**
+ *
+ * @author Herbert Nascimento
+ */
 public class TesteListas {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        
-        System.out.println("LISTA:");
-        int cont = 0;
-        ListAlunos list = new ListAlunos(5, true);
+        // TODO code application logic here 
+        int cont = 0;//conta a quantidade de elementos add/rem
+        ListAlunos list = new ListAlunos();
         geraAlunos(list);
-        System.out.println(list.toString());
+        System.out.println("LISTA:\n" + list.toString());
 
         System.out.println("-------------REMOVENDO DA LISTA E INCLUINDO NA FILA-------------");
-        ListSequencial fila = new ListSequencial(5, false);
+        ListSequencial fila = new ListSequencial(list.getTam(), false);
         Aluno aux;
         for (int i = list.getTam()-1; i >= 0; i--) {
             aux = list.getListAluno(i);
@@ -36,7 +42,7 @@ public class TesteListas {
 
         cont = 0;
         System.out.println("-------------REMOVENDO DA FILA E INCLUINDO NA PILHA-------------");
-        ListSequencial pilha = new ListSequencial(5, true);
+        ListSequencial pilha = new ListSequencial(fila.getFim(), true);
         Aluno meuAluno = new Aluno();
         for (int i = fila.getIni(); i < fila.getFim(); i++) {
             if (fila.remList(meuAluno)) {
