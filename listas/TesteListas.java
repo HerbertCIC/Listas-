@@ -12,9 +12,9 @@ public class TesteListas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here 
+        
         int cont = 0;//conta a quantidade de elementos add/rem
-        ListAlunos list = new ListAlunos(5, true);
+        ListAlunos list = new ListAlunos();//instancia uma lista ordenada com capacidade 100
         geraAlunos(list);
         System.out.println("LISTA:\n" + list.toString());
 
